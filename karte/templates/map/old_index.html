@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Cornel Remer</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content = "width=device-width, initial-scale=1.0">   <!-- WICHTIG FÜR RESPONSIVE SEITEN -->
+	
+	<!-- link rel="stylesheet" href="leaflet.css" / -->
+	<!-- script type="text/javascript" src="leaflet.js"></script -->
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin=""/>
+	
+     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin=""></script>
+    
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	
+	<script src="leaflet-providers.js"></script>
+
+	<style type="text/css">
+		#mapid { height: 500px; width: 600px;}
+	</style>
+
+	<script language="javascript">
+		function init() {
+			var mymap = L.map('mapid').setView([52.510677, 13.371777], 14);
+
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+   				maxZoom: 19,
+			}).addTo(mymap);
+
+			//mymap.attributionControl.setPrefix('');
+			// Marker erzeugen
+			var marker = L.marker([52.510677, 13.371777]).addTo(mymap);
+			var image = "<img width='80' src=" + "https://i.ytimg.com/vi/JfFP273mYQg/hqdefault.jpg" + "> <br/>" ;
+			marker.bindPopup("" + image + "<b>Hello world!</b><br/>I am a popup.");//.openPopup(); // öffnen popup sofort
+
+			}
+		
+		function ourFunction(mymap, options){
+			var ourdata = '{% url "data" %}';
+			$.getJSON(ourdata,function(data){
+				L.geoJson(data).addTo(mymap);
+			})
+		}
+	 </script>
+</head>
+
+<body class="body" style="background-color:#999999" onLoad="javascript:init();">
+    <div id="mapid"></div>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Karte</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content = "width=device-width, initial-scale=1.0">   <!-- WICHTIG FÜR RESPONSIVE SEITEN -->
+	
+	 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin=""/>
+	
+     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin=""></script>
+    
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	
+	<style type="text/css">
+		#map { height: 500px; width: 600px;}
+	</style>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var map = L.map('map').setView([52.510677, 13.371777], 14);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+            
+            var marker = L.marker([52.510677, 13.371777]);
+            var popup = "Hello, world!";
+            var image = "<img width='80' src=" + "https://i.ytimg.com/vi/JfFP273mYQg/hqdefault.jpg" + "> <br/>" ;
+            marker.bindPopup(image + popup);
+            marker.addTo(map);
+            
+           /* var geojsonFeature = {
+					"type": "Feature",
+					"properties": {
+						"name": "Fernsehturm"
+						},
+					"geometry": {
+						"type": "Point",
+						"coordinates": [13.409414291381838, 52.52081696319125]
+				};*/
+
+            //L.geoJson(address).adTo(map);
+            
+			});
+	 </script>
+</head>
+
+<body>
+	<div id="map"></div>
+</body>
+
+</html>
