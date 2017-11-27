@@ -145,4 +145,5 @@ LEAFLET_CONFIG = {
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
 #test tg
