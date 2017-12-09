@@ -1,0 +1,71 @@
+
+{% load static %}
+<html>
+    {% load leaflet_tags %}
+    {% load geojson_tags %}
+        <head>
+            <title>Index</title>
+            <meta charset="utf-8" />
+            <meta name="viewport" content = "width=device-width, initial-scale=1.0">   <!-- WICHTIG FÜR RESPONSIVE SEITEN -->
+                                
+            {% leaflet_js %}
+            {% leaflet_css %}
+            
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+            <!-- LEAFLET-ROUTNG-MACHINE -->
+            <link rel="stylesheet" type="text/css" href="{% static 'map/routing/leaflet-routing-machine.css' %}">
+            <script type="text/javascript" src="{% static 'map/routing/leaflet-routing-machine.js' %}"></script> 
+
+            <!-- MAP-STYLE -->
+            <link rel="stylesheet" type="text/css" href="{% static 'map/style/mapstyle.css' %}"/>
+            
+            <!-- Sleep Map -->
+            <script type="text/javascript" src="{% static 'map/sleepmap/Leaflet.Sleep.js' %}"></script>
+
+            <!-- SIDEBAR -->
+            <link rel="stylesheet" type="text/css" href="{% static 'map/sidebar/L.Control.Sidebar.css' %}">
+            <script type="text/javascript" src="{% static 'map/sidebar/L.Control.Sidebar.js' %}"></script>
+
+            <!-- Bootstrap -->
+            <link rel="stylesheet" href="{% static 'map/bootstrap/css/bootstrap.min.css' %}" type = "text/css"/>
+            <script src="{% static 'map/bootstrap/js/bootstrap.min.js' %}"></script>
+            
+            <!-- Backgroundimage -->
+            <style>
+                body  {
+                    background-image: url("http://festival-of-lights.de/wp-content/uploads/2016/12/Fernsehturm-2017-04.jpg");
+                    min-height: 500px; 
+                    background-attachment: fixed;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: #000000;
+                }
+            </style>
+
+        </head>
+        <body>
+            {% include "navbar.html" %}
+            <div class="container-fluid text-center" style="min-height:95%; margin-top:60px">    
+                <div class="row content">
+                  <div class="col-sm-1">
+                  </div>
+                  <div class="col-sm-10" style="background-color:#000000d5"> 
+                        {% block content %}
+                        {% endblock %}	
+                  </div>
+                  <div class="col-sm-1 sidenav">
+                  </div>
+                </div>
+              </div>
+              
+              <footer class="container-fluid text-center">
+                <p>Footer Text</p>
+              </footer>
+            
+                
+        </body>
+    </html>
+    
+    

@@ -1,49 +1,26 @@
-
+{% extends "D:/repo/geomedi/templates/index.html" %}
 {% load static %}
-<html>
-    {% load leaflet_tags %}
-    {% load geojson_tags %}
-        <head>
-            <title>Leaflet Map</title>
-            <meta charset="utf-8" />
-            <meta name="viewport" content = "width=device-width, initial-scale=1.0">   <!-- WICHTIG FÜR RESPONSIVE SEITEN -->
-                                
-            {% leaflet_js %}
-            {% leaflet_css %}
-            
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+{% load leaflet_tags %}
+{% load geojson_tags %}
+{% leaflet_js %}
+{% leaflet_css %}
 
-            <!-- LEAFLET-ROUTNG-MACHINE -->
-            <link rel="stylesheet" type="text/css" href="{% static 'map/routing/leaflet-routing-machine.css' %}">
-            <script type="text/javascript" src="{% static 'map/routing/leaflet-routing-machine.js' %}"></script> 
-
-            <!-- MAP-STYLE -->
-            <link rel="stylesheet" type="text/css" href="{% static 'map/style/mapstyle.css' %}"/>
-            
-            <!-- LEAFLET-TOOLS -->
-            <!-- link rel="stylesheet" type="text/css" href="{% static 'map/geometry/leaflet.pm.css' %}" -->
-            <!-- script type="text/javascript" src="{% static 'map/geometry/leaflet.pm.min.js' %}"></script -->
-
-            <!-- SIDEBAR -->
-            <link rel="stylesheet" type="text/css" href="{% static 'map/sidebar/L.Control.Sidebar.css' %}">
-            <script type="text/javascript" src="{% static 'map/sidebar/L.Control.Sidebar.js' %}"></script>
-            
-        </head>
-        <body>
-                <!-- Add Container for the Sidebar -->
-                <div id="sidebar">
-                    <h1>leaflet-sidebar</h1>
-                </div>
-
-                <script type="text/javascript">
+{% block content %}
+ <div id="sidebar">
+        <h1>leaflet-sidebar</h1>
+</div>
+<script type="text/javascript">
                     function ourfunction (map, options){
                         
                         //Marker with GeoJson
                         var name;
+                        var id;
+                        var laenge;
                         function onEachFeature(feature, layer) {
-                        if (feature.properties && feature.properties.popupContent) {
-                            layer.bindPopup('<p>' + feature.properties.name + '</p> <br/> <img src="/geomedi/static/map/images/Siegeslaeule_.jpg" /><p>' + feature.properties.description + '</p>');
-                            sidebar.setContent('<b>' + feature.properties.name + '</b>');
+                        if (feature.properties && feature.properties.picture) {
+                            image = feature.properties.picture;
+                            layer.bindPopup('<img src="../static/map/images/marker_img/' + image + '_klein.JPG"/><p>' + '<h3>' + feature.properties.name + '</h3><br/></p><a href="#">more...</a>');
+                            sidebar.setContent('<h3>' + feature.properties.name + '</h3><br/>' + '<img src="../static/map/images/' + image + '.JPG"/><br/><p>'+ '<h4>' + feature.properties.description + '</h4></p>');
                         }
 
                         //OnClick show Sidebar
@@ -112,12 +89,31 @@
                         //Add content to sidebar
                         //sidebar.setContent('<b>' + test + '</b>');
                         map.addControl(sidebar);
-
-                     }
-                </script>
-                 {% leaflet_map "map" callback="window.ourfunction" %}
-                
-        </body>
-    </html>
-    
-    
+                    }
+                    //Sleep Map
+                    map3 = L.map('map', {
+                        // true by default, false if you want a wild map
+                        sleep: true,
+                        // time(ms) for the map to fall asleep upon mouseout
+                        sleepTime: 750,
+                        // time(ms) until map wakes on mouseover
+                        wakeTime: 750,
+                        // defines whether or not the user is prompted oh how to wake map
+                        sleepNote: true,
+                        // allows ability to override note styling
+                        sleepNoteStyle: { color: 'red' },
+                        // should hovering wake the map? (clicking always will)
+                        hoverToWake: true,
+                        // opacity (between 0 and 1) of inactive map
+                        sleepOpacity: .7
+                    })
+</script>
+{% leaflet_map "map" callback="window.ourfunction" %}
+<div>
+    <h1 style="color:white;">Some text to enable scrolling</h1>
+    <h1 style="color:white;">Some text to enable scrolling</h1>
+    <h1 style="color:white;">Some text to enable scrolling</h1>
+    <h1 style="color:white;">Some text to enable scrolling</h1>
+    <h1 style="color:white;">Some text to enable scrolling</h1>
+</div> 
+{% endblock %}

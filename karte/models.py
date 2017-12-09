@@ -5,7 +5,8 @@ from djgeojson.fields import PointField
 
 class Marker(models.Model):
     name = models.CharField(max_length=50)
-    picture = models.ImageField(default='')
+    #picture = models.ImageField(default='')
+    picture = models.CharField(max_length=100)
     geom = models.PointField(srid=4326, blank=True)
     objects = models.GeoManager()
     description = models.TextField(default='')
@@ -14,9 +15,9 @@ class Marker(models.Model):
     #geom = models.MultiPolygonField(srid=21037)
     
     #def __str__(self):
-    @property
-    def popupContent(self):
-        return "{}".format(self.picture.url)
+    #@property
+    #def popupContent(self):
+        #return "{}".format(self.picture)
         #return '<img width="80" src="https://i.ytimg.com/vi/JfFP273mYQg/hqdefault.jpg" /><br/><b><{}</b>'.format(
         #return '<img width="80" src="{}" /><br/><b><{}</b>'.format(
             #self.picture.url,
