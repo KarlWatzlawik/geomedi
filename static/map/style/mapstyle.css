@@ -16,7 +16,7 @@ html, body, #map {
 
                         Tab: Home
 
-/* ###################################################################
+/* ###################################################################*/
 
 
 /* Bildunterschrift Copyright
@@ -27,11 +27,15 @@ html, body, #map {
     font-style: italic;
     color: grey;
     text-align: left;
+    margin-top: 5px;
 }
 
 .header1 {
     font-size: 20px;
     color: white;
+}
+.header1 .impressum {
+    text-align: center;
 }
 
 .thumbnail_home  {
@@ -76,4 +80,17 @@ html, body, #map {
   height: 100%;
   border: 0;
   padding-top: 10px;
+}
+
+
+/* ###################################################################
+
+                        Tab: Impressum
+
+/* ###################################################################*/
+
+.caption_impressum {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: #fff;
 }

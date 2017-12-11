@@ -6,3 +6,5 @@ def start(request):
 def home(request):
     return render(request, 'home.html')
 
+def impressum (request):
+    return render(request, 'impressum.html')
