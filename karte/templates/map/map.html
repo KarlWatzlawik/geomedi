@@ -1,4 +1,4 @@
-{% extends "D:/repo/geomedi/templates/index.html" %}
+{% extends "C:/Users/therrmann/Desktop/Eigene_Datei/Martin/Schule/Master/3._Semester_19.10/Interaktive_Geoemdiengestaltung/Projekt/geomedi/templates/index.html" %}
 {% load static %}
 {% load leaflet_tags %}
 {% load geojson_tags %}
@@ -19,8 +19,8 @@
                         function onEachFeature(feature, layer) {
                         if (feature.properties && feature.properties.picture) {
                             image = feature.properties.picture;
-                            layer.bindPopup('<img src="../static/map/images/marker_img/' + image + '_klein.JPG"/><p>' + '<h3>' + feature.properties.name + '</h3><br/></p><a href="#">more...</a>');
-                            sidebar.setContent('<h3>' + feature.properties.name + '</h3><br/>' + '<img src="../static/map/images/' + image + '.JPG"/><br/><p>'+ '<h4>' + feature.properties.description + '</h4></p>');
+                            layer.bindPopup('<img src="../static/map/images/sights/' + image + '.JPG"/><p>' + '<h3>' + feature.properties.name + '</h3><br/></p><a href="#">more...</a>');
+                            sidebar.setContent('<h3>' + feature.properties.name + '</h3><br/>' + '<img src="../static/map/images/sights/' + image + '.JPG"/><br/><p>'+ '<h4>' + feature.properties.description + '</h4></p>');
                         }
 
                         //OnClick show Sidebar
