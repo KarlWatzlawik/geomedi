@@ -1,54 +1,32 @@
-{% extends "D:/repo/geomedi/templates/index.html" %}
+<link href="../static/map/style/mapstyle.css" rel="stylesheet">
+
+
+{% extends "C:/Users/therrmann/Desktop/Eigene_Datei/Martin/Schule/Master/3._Semester_19.10/Interaktive_Geoemdiengestaltung/Projekt/geomedi/templates/index.html" %}
 
 {% block content %}
 
-    <div class="row" style="margin-top:10px">
-            <div class="col-md-4">
-              <div class="thumbnail" style="background-color:#252525">
-                <a href="#HotelDeRome" data-toggle="collapse">
-                  <img src="http://festival-of-lights.de/wp-content/uploads/2014/12/2014_HotelDeRome_Motiv_Elefant_JodyMacDonald_003_Nelofee.jpg" alt="Hotel de Rome" style="width:100%">
-                  <div class="caption">
-                        <p style="color:white;">Hotel de Rome</p>
-                  </div>
+    <div class="row_home">
+        <div class="caption">
+            <p class="header1">Festival of Lights Berlin 2018</p>
+        </div>
+        <div class="thumbnail_home">
+            <figure>
+                <img class="panorama_home" src="../static/map/images/other/panorama.jpg" alt="Alt">
+                <a target="_blank"
+                   href="https://www.flickr.com/photos/salomaonunes/4078996386/in/photolist-7drVvU-jdm2Gp-avZfjP-aw3S1H-7drVNJ-zQ1M6i-5uw71j-8RyfP4-8RBofA-dtcG5t-dtcGpD-5wbdoM-aBMMTW-8Hxocu-pQLK8Z-5xZcAq-pNG2Yf-dm6zJ1-dm6zSm-dm6vJz-q6yt4-7a1duk-rfeAG-8y3Q3Q-rfcPk-rfeBG-zntgdj-q6z3r">
+                    <figcaption class="creativecommons">Salomao Nunes</figcaption>
                 </a>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="thumbnail" style="background-color:#252525">
-                <a href="#BrandenburgerTor" data-toggle="collapse">
-                  <img src="http://festival-of-lights.de/wp-content/uploads/2014/12/3.Platz_2012_BrandenburgerTor_Wolken_010_ChristianeKnops_3_Druckaufl%C3%B6sung.jpg" alt="Brandenburger Tor" style="width:100%">
-                  <div class="caption">
-                      <p style="color:white;">Brandenburger Tor</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="thumbnail" style="background-color:#252525">
-                <a href="#BerlinerDom" data-toggle="collapse">
-                  <img src="http://festival-of-lights.de/wp-content/uploads/2014/12/2013_BerlinerDoM_Klangfarben_MusterBlauGruen_004_FH.jpg" alt="Berliner Dom" style="width:100%">
-                  <div class="caption">
-                    <p style="color:white;">Berliner Dom</p>
-                  </div>
-                </a>
-              </div>
-            </div>
+            </figure>
+        </div>
     </div>
-            <div id="HotelDeRome" class="collapse">
-                <p style="color:white;">Das gehobene Hotel neben der Staatsoper am Bebelplatz befindet sich in einem Gebäude von 1889, das ehemals Hauptsitz einer Bank war. Es liegt neun Gehminuten von der Museumsinsel entfernt.<br/>
-                        
-                        Die eleganten Zimmer sind mit hohen Stuckdecken und Marmorbad mit separater Badewanne und Dusche sowie mit Schreibtisch und kostenlosem WLAN ausgestattet. Die Suiten bieten außerdem eine Sitzecke, einen begehbaren Kleiderschrank sowie ein kostenloses Frühstücksbuffet und hauseigene Filme. Zum Teil verfügen sie über einen Balkon.<br/>
-                        
-                        Im schicken Restaurant wird italienische Küche serviert, in der Bar auf der Dachterrasse gibt es Cocktails und Snacks. Ferner stehen ein Spa mit Innenpool, Dampfbad, Sauna und Fitnessraum sowie ein Business Center zur Verfügung. Das Hotel bietet Flughafen-Shuttle und Parkplätze (gegen Gebühr).</p>
-            </div>
 
-            <div id="BrandenburgerTor" class="collapse">
-                    <p style="color:white;">Das Brandenburger Tor in Berlin ist ein frühklassizistisches Triumphtor, das an der Westflanke des quadratischen Pariser Platzes im Berliner Ortsteil Mitte steht. Es wurde als Abschluss der zentralen Prachtstraße der Dorotheenstadt, der Straße Unter den Linden, in den Jahren von 1789 bis 1793 auf Anweisung des preußischen Königs Friedrich Wilhelm II. nach Entwürfen von Carl Gotthard Langhans errichtet. Die das Tor krönende Skulptur der Quadriga ist ein Werk nach dem Entwurf des Bildhauers Johann Gottfried Schadow. Westlich des Brandenburger Tores befinden sich die ausgedehnten Grünflächen des Großen Tiergartens, die in gradliniger Verlängerung der Straße Unter den Linden von der Straße des 17. Juni durchquert werden. Die Platzfläche unmittelbar westlich des Tores trägt den Namen Platz des 18. März.</p>
-            </div>
 
-            <div id="BerlinerDom" class="collapse">
-                    <p style="color:white;">Der Berliner Dom (eigentlich Oberpfarr- und Domkirche zu Berlin) im Kirchenkreis Berlin Stadtmitte ist eine evangelische Kirche im Berliner Ortsteil Mitte des gleichnamigen Bezirks auf dem nördlichen Teil der Spreeinsel, die hier Museumsinsel genannt wird. Er ist die flächenmäßig größte evangelische Kirche Deutschlands und die größte Kirche Berlins. Der 1894 bis 1905 nach Plänen von Julius Raschdorff in Anlehnung an die italienische Hochrenaissance und den Barock errichtete Dom gehört zu den bedeutendsten evangelischen Kirchenbauten in Deutschland. Der Grundriss des denkmalgeschützten Gebäudes ist annähernd quadratisch und beinhaltet mehrere Räume mit unterschiedlichen Nutzungen. Hauptnutzung ist die Funktion als Ort für Gottesdienste. Auch dazu stehen zwei Räume zur Verfügung, die Predigtkirche und die Tauf- und Traukirche. Der dominierende Raum ist die zentrale Predigtkirche unter der Kuppel, die sowohl den größten Teil der Fläche als auch des Raumvolumens einnimmt. Deutlich kleiner ist die Tauf- und Traukirche. Weiterhin befinden sich im Gebäude unter anderem noch die Küsterei, Versammlungsräume, der Bereich der Lebensberatung im Berliner Dom (in Trägerschaft der Immanuel Diakonie) und die Hohenzollern-Gruft.</p>
-            </div>
+    <div>
+    <!--
+        <p class="text_home">
+            Das Festival of Lights (englisch, ‚Lichterfest‘) ist eine internationale Veranstaltungsreihe und eingetragene Marke. Das Festival of Lights Berlin gehört zu den bekanntesten Lichtfestivals weltweit. Es ist ein kostenloser Event in Berlin, der jährlich im Oktober stattfindet und 10 Tage lang bekannte Berliner Sehenswürdigkeiten durch Illuminationen, Feuerwerk, lichtkünstlerische Projektionen und 3D-Mappings aufwändig in Szene setzt. Beleuchtet werden Bauwerke, Straßen und Plätze, so zum Beispiel das Brandenburger Tor, der Fernsehturm, der Berliner Dom oder die Siegessäule. Die erste Veranstaltung fand im Jahr 2004 statt.</p>
+    -->
+    </div>
     <div class="embed-responsive embed-responsive-16by9">
         <iframe class="embed-responsive-item" src="https://youtube.de/embed/KCEeuxJEk6c"></iframe>
     </div>
