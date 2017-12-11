@@ -1,0 +1,66 @@
+
+{% load static %}
+<html>
+        <head>
+            <title>Index</title>
+            <meta charset="utf-8" />
+            <meta name="viewport" content = "width=device-width, initial-scale=1.0">   <!-- WICHTIG FÜR RESPONSIVE SEITEN -->
+                                
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+            
+             <!-- Bootstrap -->
+            <link rel="stylesheet" href="{% static 'map/bootstrap/css/bootstrap.min.css' %}" type = "text/css"/>
+            <script src="{% static 'map/bootstrap/js/bootstrap.min.js' %}"></script>
+
+            <!-- Parallax-->
+            <style>
+                .parallax {
+                    /* The image used */
+                    background-image: url("http://festival-of-lights.de/wp-content/uploads/2016/12/Fernsehturm-2017-04.jpg");
+
+                    /* Set a specific height */
+                    min-height: 500px; 
+
+                    /* Create the parallax scrolling effect */
+                    background-attachment: fixed;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+            </style>
+            <!-- Affix Navigation Menu-->
+            <style>
+                    /* Note: Try to remove the following lines to see the effect of CSS positioning */
+                    .affix {
+                        top: 0;
+                        width: 100%;
+                        z-index: 9999 !important;
+                    }
+                  
+                    .affix + .container-fluid {
+                        padding-top: 70px;
+                    }
+            </style>
+            
+        </head>
+        <body style="background-color:#000000">
+                
+                <div class="parallax">
+                        <div class="container-fluid" style="background-color:#00000000;color:#fff;height:100%; margin-bottom:5%"></div>
+                        
+                        <div class="container-fluid" style="background-color:#000000d5; height:100%; max-height:100%">
+                            <div class="container-fluid" style="background-color:#25252500; height:52px">{% include "navbar_start.html" %}</div>
+                            <h1 style="color:white;">Some text to enable scrolling</h1>
+                            <h1 style="color:white;">Some text to enable scrolling</h1>
+                            <h1 style="color:white;">Some text to enable scrolling</h1>
+                            <h1 style="color:white;">Some text to enable scrolling</h1>
+                            <h1 style="color:white;">Some text to enable scrolling</h1>
+                            <h1 style="color:white;">Some text to enable scrolling</h1>
+                            <h1 style="color:white;">Some text to enable scrolling</h1>
+                            <h1 style="color:white;">Some text to enable scrolling</h1>
+                        </div>
+                </div>
+        </body>
+</html>
+    
+    

@@ -58,7 +58,7 @@ ROOT_URLCONF = 'geomedi.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -89,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'map_db',
         'USER': 'postgres',
-        'PASSWORD': '1',
+        'PASSWORD': 'Passwort',
         'HOST': '',
         'PORT': '',
     }
@@ -147,3 +147,4 @@ STATICFILES_DIRS = (
 )
 
 #test tg
+
