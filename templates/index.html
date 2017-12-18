@@ -1,74 +1,78 @@
-
 {% load static %}
+
 <html>
-    {% load leaflet_tags %}
-    {% load geojson_tags %}
-        <head>
-            <title>Index</title>
-            <meta charset="utf-8" />
-            <meta name="viewport" content = "width=device-width, initial-scale=1.0">   <!-- WICHTIG FÜR RESPONSIVE SEITEN -->
-                                
-            {% leaflet_js %}
-            {% leaflet_css %}
-            
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+{% load leaflet_tags %}
+{% load geojson_tags %}
+<head>
+    <title>Index</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   <!-- WICHTIG FÜR RESPONSIVE SEITEN -->
 
-            <!-- LEAFLET-ROUTNG-MACHINE -->
-            <link rel="stylesheet" type="text/css" href="{% static 'map/routing/leaflet-routing-machine.css' %}">
-            <script type="text/javascript" src="{% static 'map/routing/leaflet-routing-machine.js' %}"></script> 
+    {% leaflet_js %}
+    {% leaflet_css %}
 
-            <!-- MAP-STYLE -->
-            <link rel="stylesheet" type="text/css" href="{% static 'map/style/mapstyle.css' %}"/>
-            
-            <!-- Sleep Map -->
-            <script type="text/javascript" src="{% static 'map/sleepmap/Leaflet.Sleep.js' %}"></script>
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-            <!-- SIDEBAR -->
-            <link rel="stylesheet" type="text/css" href="{% static 'map/sidebar/L.Control.Sidebar.css' %}">
-            <script type="text/javascript" src="{% static 'map/sidebar/L.Control.Sidebar.js' %}"></script>
+    <!-- LEAFLET-ROUTNG-MACHINE -->
+    <link rel="stylesheet" type="text/css" href="{% static 'map/routing/leaflet-routing-machine.css' %}">
+    <script type="text/javascript" src="{% static 'map/routing/leaflet-routing-machine.js' %}"></script>
 
-            <!-- Bootstrap -->
-            <link rel="stylesheet" href="{% static 'map/bootstrap/css/bootstrap.min.css' %}" type = "text/css"/>
-            <script src="{% static 'map/bootstrap/js/bootstrap.min.js' %}"></script>
-            
-            <!-- Backgroundimage -->
-            <style>
-                body  {
-                    background-image: url("http://festival-of-lights.de/wp-content/uploads/2016/12/Fernsehturm-2017-04.jpg");
-                    min-height: 500px; 
-                    background-attachment: fixed;
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    background-size: cover;
-                    background-color: #000000;
-                }
-            </style>
+    <!-- MAP-STYLE -->
+    <link rel="stylesheet" type="text/css" href="{% static 'map/style/mapstyle.css' %}"/>
 
-        </head>
-        <body>
-            {% include "navbar.html" %}
-            <div class="container-fluid text-center" style="min-height:95%; margin-top:60px">    
-                <div class="row content">
-                  <div class="col-sm-1">
-                  </div>
-                  <div class="col-sm-10" style="background-color:#000000d5"> 
-                        {% block content %}
-                        {% endblock %}	
-                  </div>
-                  <div class="col-sm-1 sidenav">
-                  </div>
-                </div>
-              </div>
+    <!-- Sleep Map -->
+    <script type="text/javascript" src="{% static 'map/sleepmap/Leaflet.Sleep.js' %}"></script>
 
-             <!-- Add Footer Text here if you want
+    <!-- SIDEBAR -->
+    <link rel="stylesheet" type="text/css" href="{% static 'map/sidebar/L.Control.Sidebar.css' %}">
+    <script type="text/javascript" src="{% static 'map/sidebar/L.Control.Sidebar.js' %}"></script>
 
-              <footer class="container-fluid text-center">
-                <p>Footer Text</p>
-              </footer>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'map/bootstrap/css/bootstrap.min.css' %}" type="text/css"/>
+    <script src="{% static 'map/bootstrap/js/bootstrap.min.js' %}"></script>
 
-            -->
-                
-        </body>
-    </html>
+    <!-- Backgroundimage -->
+    <style>
+        body {
+            background-image: url("../static/map/images/other/background.jpg");
+            min-height: 500px;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: #000000;
+        }
+    </style>
+
+</head>
+<body>
+{% include "navbar.html" %}
+<div class="container-fluid text-center" style="min-height:95%; margin-top:60px">
+    <div class="row content">
+        <div class="col-sm-1">
+        </div>
+        <div class="col-sm-10" style="background-color:#000000d5">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <div class="col-sm-1 sidenav">
+        </div>
+    </div>
+</div>
+
+<!-- Add Footer Text here if you want-->
+
+
+<footer class="container-fluid text-center">
+    <a href="https://www.flickr.com/photos/91186697@N05/11212474733/in/photolist-i5NS6T-s9FYVG-doift1-pCQtW1-W5utYV-hdP8NM-WdwrTL-u4v3v-oNntHf-pJyhXu-qeotcY-bjXyrX-XbeNyG-WD7b8u-WD7bu1-Zt7XXh-V3vW7r-pF58oU-58ps6w-7e55ta-pCWvGQ-pyN7pK-ZmBgRE-Yuq59m-Zsnm3J-CrfMC5-XbeNnE-UZE1FQ-qkmibY-XbeN6Y-krT1w-T1FsJr-5vB1Zx-bjXyri-5wTMUs-WD7aHG-ZTSbYW-5wTMS3-qC2v2J-RVCGeQ-eKH31S-hdRjk5-4bL4vK-bq1eqG-pRwCTu-pHeRXb-oUueSP-pT83wF-eKHkhC-pkrooh"
+       class="creativecommons" class="creativecommons">Background Photo</a>
+    <a href="https://www.flickr.com/photos/91186697@N05/" class="creativecommons">by Stadtlichtpunkte</a>
+    <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" class="creativecommons"> is licensed under CC BY-NC-ND 2.0</a>
+</footer>
+
+
+</body>
+</html>
     
     
