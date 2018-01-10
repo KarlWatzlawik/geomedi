@@ -14,5 +14,6 @@ urlpatterns = [
 	url(r'^$', views.start,name='start'),
 	url(r'^home/', views.home,name='home'),
 	url(r'^karte/', include('karte.urls')),
+	url(r'^fotos/', views.fotos,name='fotos'),
 	url(r'^impressum/', views.impressum,name='impressum'),
 ]
