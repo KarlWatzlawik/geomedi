@@ -12,6 +12,13 @@ html, body, #map {
 
 }
 
+.col-sm-10-default {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
 /* ###################################################################
 
                         Startpage
@@ -38,9 +45,7 @@ html, body, #map {
 
 /* ###################################################################*/
 
-/* Bildunterschrift Copyright
- */
-
+/* Bildunterschrift Copyright */
 .creativecommons {
     font-size: 10px;
     font-style: italic;
@@ -112,4 +117,40 @@ html, body, #map {
     padding-top: 8px;
     padding-bottom: 8px;
     color: #fff;
+}
+
+/* ###################################################################
+
+                        Tab: Fotos
+
+/* ###################################################################*/
+
+.photo_list_box {
+    margin-bottom: 30px;
+}
+
+/* Bild */
+.photo_list_view {
+    padding-top: 20px;
+    padding-bottom: 8px;
+    //border: 1px solid;
+    //padding: 10px;
+    //box-shadow: 2px 4px white;
+    box-shadow: 5px 0px 10px grey;
+
+   // box-shadow: 5px 5px 0 0 rgba(255, 255, 255, 0.3),0 6px 20px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Bildunterschriften */
+.photo_list_text_header {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+.photo_list_text_legal {
+    text-align: center;
+    margin-top: -5px;
 }
