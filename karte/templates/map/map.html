@@ -16,7 +16,6 @@
 
 {% block content %}
  <div id="sidebar">
-        <h1>leaflet-sidebar</h1>
 </div>
 <script type="text/javascript">
                     function ourfunction (map, options){
@@ -28,7 +27,7 @@
                         function onEachFeature(feature, layer) {
                         if (feature.properties && feature.properties.picture) {
                             image = feature.properties.picture;
-                            layer.bindPopup('<img src="../static/map/images/sights/' + image + '.JPG"/><p>' + '<h3>' + feature.properties.name + '</h3><br/></p><a href="#">more...</a>');
+                            layer.bindPopup('<h4>' + feature.properties.name + '</h4>');
                             sidebar.setContent('<h3>' + feature.properties.name + '</h3><br/>' + '<img src="../static/map/images/sights/' + image + '.JPG"/><br/><p>'+ '<h4>' + feature.properties.description + '</h4></p>');
                         }
 
@@ -98,6 +97,7 @@
                         //Add content to sidebar
                         //sidebar.setContent('<b>' + test + '</b>');
                         map.addControl(sidebar);
+                        return properties.name;
                     }
                     //Sleep Map
                     map3 = L.map('map', {
@@ -118,11 +118,4 @@
                     })
 </script>
 {% leaflet_map "map" callback="window.ourfunction" %}
-<div>
-    <h1 style="color:white;">Some text to enable scrolling</h1>
-    <h1 style="color:white;">Some text to enable scrolling</h1>
-    <h1 style="color:white;">Some text to enable scrolling</h1>
-    <h1 style="color:white;">Some text to enable scrolling</h1>
-    <h1 style="color:white;">Some text to enable scrolling</h1>
-</div> 
 {% endblock %}
