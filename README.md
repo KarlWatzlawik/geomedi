@@ -21,3 +21,5 @@ Sonstiges
 - Kartennavigation: Defaultwerte auf null setzen
 - Responsivität prüfen
 - News / Neuigkeiten anlegen
+- Favicon anlegen
+- Vermerke auf leaflet/bootstrap angeben
