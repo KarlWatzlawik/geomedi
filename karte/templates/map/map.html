@@ -1,7 +1,8 @@
 <head>
     <title>Karte</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content = "width=device-width, initial-scale=1.0">   <!-- WICHTIG FÜR RESPONSIVE SEITEN -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   <!-- WICHTIG FÜR RESPONSIVE SEITEN -->
+    <link rel="icon" type="image/jpg" href="favicon.ico"/>
 </head>
 
 <!-- todo: Add your path here -->
@@ -15,107 +16,170 @@
 {% leaflet_css %}
 
 {% block content %}
- <div id="sidebar">
-</div>
-<script type="text/javascript">
-                    function ourfunction (map, options){
-                        
-                        //Marker with GeoJson
-                        var name;
-                        var id;
-                        var laenge;
-                        function onEachFeature(feature, layer) {
-                        if (feature.properties && feature.properties.picture) {
-                            image = feature.properties.picture;
-                            layer.bindPopup('<h4>' + feature.properties.name + '</h4>');
-                            sidebar.setContent('<h3>' + feature.properties.name + '</h3><br/>' + '<img src="../static/map/images/sights/' + image + '.JPG"/><br/><p>'+ '<h4>' + feature.properties.description + '</h4></p>');
-                        }
+    <div id="sidebar">
+    </div>
+    <script type="text/javascript">
+        function ourfunction(map, options) {
+            //Marker with GeoJson
+            var name;
+            var id;
+            var laenge;
 
-                        //OnClick show Sidebar
-                        layer.on('click', function (e) {
-                            sidebar.toggle();
-                        });
 
-                        //OnClick hide Sidebar
-                        map.on('click', function () {
-                            sidebar.hide();
-                        })
+            //###############################################
+            // Originallösung
+            //###############################################
+            /*
+
+            function onEachFeature(feature, layer) {
+                if (feature.properties && feature.properties.picture) {
+                    image = feature.properties.picture;
+                    layer.bindPopup('<img src="../static/map/images/sights/' + image + '.JPG"/><p>' + '<h4>' + feature.properties.name + '</h4><br/></p><a href="#moreinfo">more...</a>');
+                    sidebar.setContent('<h3>' + feature.properties.name + '</h3><br/>' + '<img src="../static/map/images/sights/' + image + '.JPG"/><br/><p>' + '<h4>' + feature.properties.description + '</h4></p>');
+                }
+
+                //OnClick show Sidebar
+                layer.on('click', function (e) {
+                    sidebar.toggle();
+                });
+
+                //OnClick hide Sidebar
+                map.on('click', function () {
+                    sidebar.hide();
+                })
+            }
+
+            var controlLayers = L.control.layers().addTo(map);
+            */
+            //###############################################
+            // Originallösung Ende
+            //###############################################
+
+
+
+            //###############################################
+            // Lösung 2
+            // https://gis.stackexchange.com/questions/201987/leaflet-sidebar-set-content-depending-on-clicked-geojson-feature
+            //###############################################
+
+
+            //function for click event to select GeoJSON feature:
+            function onEachFeature(feature, layer) {
+                layer.on({
+                    //mouseover: highlightFeature,
+                    //mouseout: resetHighlight,
+                    //click: openSidebar
+                    click: function (e) {
+                        openSidebar(e)
                     }
+                });
+            }
 
-                        var controlLayers = L.control.layers().addTo(map);
+            //function to open sidebar:
+            function openSidebar(e) {
+                sidebar.toggle();
+                if (e.target.feature.properties.name == "Fernsehturm") {
+                    sidebar.setContent('this is Fernsehturm' + '<h3> schalalalala</h3>');
+                    //sidebar.setContent('schalala' + feature.properties.name);
+                    //sidebar.html('<h1> this is ' + selection.feature.properties.name + '</h1>');
+                }
 
-                        //Add Marker
-                        var ourdata = '{% url "data" %}';
-                        
-                        $.getJSON(ourdata, function(data){
-                            var marker = L.geoJson(data,{onEachFeature: onEachFeature}).addTo(map);
-                            controlLayers.addOverlay(marker, 'Marker');
-                        })
+                if (e.target.feature.properties.name == "Dom") {
+                    sidebar.setContent('this is Dom');
+                }
+            }
 
-                        //Add Polygon
-                        var polydata = '{% url "poly" %}';
-                        
-                        $.getJSON(polydata, function(poly){
-                            var polygone = L.geoJson(poly).addTo(map);
-                            controlLayers.addOverlay(polygone, 'Polygone');
-                        })
-                        
-                        //Routing
-                        L.Routing.control({
-                            //Startpunkte festlegen
-                            waypoints: [
-                                L.latLng(52.514, 13.350),
-                                L.latLng(52.520, 13.409)
-                            ],
-                            //Lineoptions
-                            lineOptions: {
-                                styles: [
-                                    {color: 'black', opacity: 0.3, weight: 11},
-                                    {color: 'white', opacity: 0.9, weight: 9},
-                                    {color: 'red', opacity: 1, weight: 3}
-                                ]
-                            },
-                            //List collapse
-                            collapsible: true,
-                            //Geocoder
-                            geocoder: true,
-                            //show routing in beginning
-                            show: false,
+            //OnClick hide Sidebar
+            map.on('click', function () {
+                sidebar.hide();
+            })
 
-                        }).addTo(map);
+            //loaded GeoJSON:
+            var my_geojson = L.geoJson(my_geojson, {
+                //style: myStyle,
+                onEachFeature: onEachFeature
+            }).addTo(map);
 
-                        //Init Sidebar
-                        var sidebar = L.control.sidebar('sidebar', {
-                            position: 'left',
-                            closeButton: 'true'
-                        });
-                        //Start options: show/hide sidebar
-                        setTimeout(function () {
-                            sidebar.hide();
-                        }, 500);
 
-                        //Add content to sidebar
-                        //sidebar.setContent('<b>' + test + '</b>');
-                        map.addControl(sidebar);
-                        return properties.name;
-                    }
-                    //Sleep Map
-                    map3 = L.map('map', {
-                        // true by default, false if you want a wild map
-                        sleep: true,
-                        // time(ms) for the map to fall asleep upon mouseout
-                        sleepTime: 750,
-                        // time(ms) until map wakes on mouseover
-                        wakeTime: 750,
-                        // defines whether or not the user is prompted oh how to wake map
-                        sleepNote: true,
-                        // allows ability to override note styling
-                        sleepNoteStyle: { color: 'red' },
-                        // should hovering wake the map? (clicking always will)
-                        hoverToWake: true,
-                        // opacity (between 0 and 1) of inactive map
-                        sleepOpacity: .7
-                    })
-</script>
-{% leaflet_map "map" callback="window.ourfunction" %}
+            //###############################################
+            // Lösung 2 Ende
+            //###############################################
+
+
+            //Add Marker
+            var ourdata = '{% url "data" %}';
+
+            $.getJSON(ourdata, function (data) {
+                var marker = L.geoJson(data, {onEachFeature: onEachFeature}).addTo(map);
+                controlLayers.addOverlay(marker, 'Marker');
+            })
+
+            //Add Polygon
+            var polydata = '{% url "poly" %}';
+
+            $.getJSON(polydata, function (poly) {
+                var polygone = L.geoJson(poly).addTo(map);
+                controlLayers.addOverlay(polygone, 'Polygone');
+            })
+
+            //Routing
+            //Quelle: http://www.liedman.net/leaflet-routing-machine/tutorials/
+            L.Routing.control({
+                //Startpunkte festlegen
+                waypoints: [
+                    L.latLng(52.514, 13.350),
+                    L.latLng(52.520, 13.409)
+                ],
+                //Lineoptions
+                lineOptions: {
+                    styles: [
+                        {color: 'black', opacity: 0.3, weight: 11},
+                        {color: 'white', opacity: 0.9, weight: 9},
+                        {color: 'red', opacity: 1, weight: 3}
+                    ]
+                },
+                //List collapse
+                collapsible: true,
+                //Geocoder
+                geocoder: true,
+                //show routing in beginning
+                show: false,
+
+            }).addTo(map);
+
+            //Init Sidebar
+            var sidebar = L.control.sidebar('sidebar', {
+                position: 'left',
+                closeButton: 'true'
+            });
+            //Start options: show/hide sidebar
+            setTimeout(function () {
+                sidebar.hide();
+            }, 500);
+
+            //Add content to sidebar
+            //sidebar.setContent('<b>' + test + '</b>');
+            map.addControl(sidebar);
+            return properties.name;
+        }
+
+        //Sleep Map
+        map3 = L.map('map', {
+            // true by default, false if you want a wild map
+            sleep: true,
+            // time(ms) for the map to fall asleep upon mouseout
+            sleepTime: 750,
+            // time(ms) until map wakes on mouseover
+            wakeTime: 750,
+            // defines whether or not the user is prompted oh how to wake map
+            sleepNote: true,
+            // allows ability to override note styling
+            sleepNoteStyle: {color: 'red'},
+            // should hovering wake the map? (clicking always will)
+            hoverToWake: true,
+            // opacity (between 0 and 1) of inactive map
+            sleepOpacity: .7
+        })
+    </script>
+    {% leaflet_map "map" callback="window.ourfunction" %}
 {% endblock %}
