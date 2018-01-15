@@ -18,6 +18,7 @@ Refactoring
 - map.html: JS herausnehmen
 
 Sonstiges
+- Peter's Marker einsetzen
 - Kartennavigation: Defaultwerte auf null setzen
 - Responsivität prüfen
 - News / Neuigkeiten anlegen
