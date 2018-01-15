@@ -10,24 +10,28 @@ To Do's:
 
 Popufenster
 - Wieso wird immer nur ein Popupfenster geöffnet?
-- Popupfenster: Schließen hinzufügen (x)
 - Popupfenster stylen
+
 
 Refactoring
 - index.html: style herausnehmen
 - map.html: JS herausnehmen
 
-Sonstiges
-- Peter's Marker einsetzen
-- Kartennavigation: Defaultwerte auf null setzen
-- Favicon anlegen
-- Vermerke auf leaflet/bootstrap angeben
 
+Sonstiges
+- Kartennavigation: Adresseingabe ermöglichen
+- Kartennavigation: Defaultwerte auf null setzen
+- info.txt anlegen
+- Peter's Marker einsetzen
+
+
+
+Aufgegeben
+- News / Neuigkeiten anlegen
 
 
 DONE
+- Favicon anlegen --> Wird nur auf Server angezeigt
 - Responsivität prüfen
-
-
-Egal
-- News / Neuigkeiten anlegen
+- Vermerke auf leaflet/bootstrap angeben
+- Popupfenster: Schließen hinzufügen (x)
