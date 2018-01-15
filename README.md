@@ -20,7 +20,14 @@ Refactoring
 Sonstiges
 - Peter's Marker einsetzen
 - Kartennavigation: Defaultwerte auf null setzen
-- Responsivität prüfen
-- News / Neuigkeiten anlegen
 - Favicon anlegen
 - Vermerke auf leaflet/bootstrap angeben
+
+
+
+DONE
+- Responsivität prüfen
+
+
+Egal
+- News / Neuigkeiten anlegen
