@@ -6,8 +6,8 @@
 </head>
 
 <!-- todo: Add your path here -->
-{% extends "C:/Users/therrmann/Desktop/Eigene_Datei/Martin/Schule/Master/3._Semester_19.10/Interaktive_Geoemdiengestaltung/Projekt/geomedi/templates/index.html" %}
-<!-- % extends "D:/repo/geomedi/templates\index.html" %} -->
+<!-- % extends "C:/Users/therrmann/Desktop/Eigene_Datei/Martin/Schule/Master/3._Semester_19.10/Interaktive_Geoemdiengestaltung/Projekt/geomedi/templates/index.html" %} -->
+{% extends "D:/repo/geomedi/templates\index.html" %}
 
 {% load static %}
 {% load leaflet_tags %}
@@ -21,91 +21,40 @@
     <script type="text/javascript">
         function ourfunction(map, options) {
             //Marker with GeoJson
-            var name;
-            var id;
-            var laenge;
-
-
-            //###############################################
-            // Originallösung
-            //###############################################
-            /*
-
             function onEachFeature(feature, layer) {
-                if (feature.properties && feature.properties.picture) {
-                    image = feature.properties.picture;
-                    layer.bindPopup('<img src="../static/map/images/sights/' + image + '.JPG"/><p>' + '<h4>' + feature.properties.name + '</h4><br/></p><a href="#moreinfo">more...</a>');
-                    sidebar.setContent('<h3>' + feature.properties.name + '</h3><br/>' + '<img src="../static/map/images/sights/' + image + '.JPG"/><br/><p>' + '<h4>' + feature.properties.description + '</h4></p>');
+                if(feature.geometry.type === 'Point'){
+                    layer.bindPopup('<img src="../static/map/images/sights/' + feature.properties.picture + '.JPG"/><p>' + '<h4>' + feature.properties.name + '</h4><br/></p><a href="#" id="myHref">more...</a>');
+                    layer.on({
+                        click: openSidebar
+                    });
+                    //############ NEW ##############
+                    //sidebar öffnen --> keine infos sichtbar mit dieser Methode
+                    /*
+                    layer.bindPopup('<img src="../static/map/images/sights/' + feature.properties.picture + '.JPG"/><p>' + '<h4>' + feature.properties.name + '</h4><br/></p><button class="trigger">Say hi</button>');
+                    $('#map').on('click', '.trigger', function() {
+                        sidebar.toggle();
+                            sidebar.setContent('<h3>' + e.target.feature.properties.name + '</h3><br/>' + '<img src="../static/map/images/sights/' + e.target.feature.properties.picture + '.JPG"/><br/><p>' + '<h4>' + e.target.feature.properties.description + '</h4></p>');
+                    });
+                    */
                 }
-
-                //OnClick show Sidebar
-                layer.on('click', function (e) {
-                    sidebar.toggle();
-                });
-
                 //OnClick hide Sidebar
                 map.on('click', function () {
                     sidebar.hide();
                 })
             }
 
-            var controlLayers = L.control.layers().addTo(map);
-            */
-            //###############################################
-            // Originallösung Ende
-            //###############################################
-
-
-
-            //###############################################
-            // Lösung 2
-            // https://gis.stackexchange.com/questions/201987/leaflet-sidebar-set-content-depending-on-clicked-geojson-feature
-            //###############################################
-
-
-            //function for click event to select GeoJSON feature:
-            function onEachFeature(feature, layer) {
-                layer.on({
-                    //mouseover: highlightFeature,
-                    //mouseout: resetHighlight,
-                    //click: openSidebar
-                    click: function (e) {
-                        openSidebar(e)
-                    }
-                });
-            }
-
-            //function to open sidebar:
-            function openSidebar(e) {
+            //######### NEW ############
+            //SIDEBAR-FUNCTION
+            function openSidebar(e){
                 sidebar.toggle();
-                if (e.target.feature.properties.name == "Fernsehturm") {
-                    sidebar.setContent('this is Fernsehturm' + '<h3> schalalalala</h3>');
-                    //sidebar.setContent('schalala' + feature.properties.name);
-                    //sidebar.html('<h1> this is ' + selection.feature.properties.name + '</h1>');
-                }
-
-                if (e.target.feature.properties.name == "Dom") {
-                    sidebar.setContent('this is Dom');
+                if(e.target.feature.geometry.type === 'Point'){
+                    sidebar.setContent('<h3>' + e.target.feature.properties.name + '</h3><br/>' + '<img src="../static/map/images/sights/' + e.target.feature.properties.picture + '.JPG"/><br/><p>' + '<h4>' + e.target.feature.properties.description + '</h4></p>');
                 }
             }
+            //############# END NEW ############
 
-            //OnClick hide Sidebar
-            map.on('click', function () {
-                sidebar.hide();
-            })
-
-            //loaded GeoJSON:
-            var my_geojson = L.geoJson(my_geojson, {
-                //style: myStyle,
-                onEachFeature: onEachFeature
-            }).addTo(map);
-
-
-            //###############################################
-            // Lösung 2 Ende
-            //###############################################
-
-
+            var controlLayers = L.control.layers().addTo(map);
+            
             //Add Marker
             var ourdata = '{% url "data" %}';
 
@@ -160,7 +109,7 @@
             //Add content to sidebar
             //sidebar.setContent('<b>' + test + '</b>');
             map.addControl(sidebar);
-            return properties.name;
+            //return properties.name;
         }
 
         //Sleep Map
