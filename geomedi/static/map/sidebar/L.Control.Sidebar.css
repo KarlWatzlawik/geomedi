@@ -57,7 +57,7 @@
       .leaflet-sidebar > .leaflet-control {
         box-shadow: none;
         -webkit-border-radius: 0;
-        border-radius: 0; }
+        border-radius: 25px; }
         .leaflet-touch .leaflet-sidebar > .leaflet-control {
           border: 0; } }
   @media (min-width: 768px) and (max-width: 991px) {
