@@ -23,19 +23,15 @@
             //Marker with GeoJson
             function onEachFeature(feature, layer) {
                 if(feature.geometry.type === 'Point'){
-                    layer.bindPopup('<img src="../static/map/images/sights/' + feature.properties.picture + '.JPG"/><p>' + '<h4>' + feature.properties.name + '</h4><br/></p><a href="#" id="myHref">more...</a>');
-                    layer.on({
-                        click: openSidebar
-                    });
                     //############ NEW ##############
-                    //sidebar öffnen --> keine infos sichtbar mit dieser Methode
-                    /*
-                    layer.bindPopup('<img src="../static/map/images/sights/' + feature.properties.picture + '.JPG"/><p>' + '<h4>' + feature.properties.name + '</h4><br/></p><button class="trigger">Say hi</button>');
+                    layer.bindPopup('<img src="../static/map/images/sights/' + feature.properties.picture + '.JPG"/><p>' + '<h4>' + feature.properties.name + '</h4><br/></p><button class="trigger">more...</button>');
                     $('#map').on('click', '.trigger', function() {
-                        sidebar.toggle();
-                            sidebar.setContent('<h3>' + e.target.feature.properties.name + '</h3><br/>' + '<img src="../static/map/images/sights/' + e.target.feature.properties.picture + '.JPG"/><br/><p>' + '<h4>' + e.target.feature.properties.description + '</h4></p>');
+                        show = true;
+                        openSidebar();
                     });
-                    */
+                    layer.on({
+                        click: openSidebar,
+                    });
                 }
                 //OnClick hide Sidebar
                 map.on('click', function () {
@@ -45,12 +41,17 @@
 
             //######### NEW ############
             //SIDEBAR-FUNCTION
+            var show = false;       //boolean wert zum zeigen der sidebar
             function openSidebar(e){
-                sidebar.toggle();
+                if(show){
+                    sidebar.toggle();
+                    show = false;
+                }
                 if(e.target.feature.geometry.type === 'Point'){
                     sidebar.setContent('<h3>' + e.target.feature.properties.name + '</h3><br/>' + '<img src="../static/map/images/sights/' + e.target.feature.properties.picture + '.JPG"/><br/><p>' + '<h4>' + e.target.feature.properties.description + '</h4></p>');
                 }
             }
+            
             //############# END NEW ############
 
             var controlLayers = L.control.layers().addTo(map);
