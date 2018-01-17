@@ -1,0 +1,28 @@
+﻿Infodatei zur Ordnerstruktur des Projekts
+
+- geomedi
+	HowTo-Datei zum Start des Projekts
+	manage.py zum Start des Projekts
+	
+
+	- geomedi
+		settings.py für generelle Einstellungen
+		urls.py für angelegte URL's
+
+	- karte
+		-templates
+			Anlegen der Seite "Karte",
+			Kartenfunktionalitäten etc.
+
+	- static
+		Dateien zu:
+			bootstrap (Frontendf-Framework),
+			Projektbilder,
+			Leaflet (JS Bibliothek zur erstellung von WebGIS-Systeme),
+			Routing,
+			Sidebar,
+			sleempap,
+			Styling weiterer Seiten home, foto, etc.)
+
+	- templates
+		HTML-Dateien für alle angelegten Seiten

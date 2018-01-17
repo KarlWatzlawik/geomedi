@@ -1,0 +1,135 @@
+<head>
+    <title>Karte</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   <!-- WICHTIG FÜR RESPONSIVE SEITEN -->
+    <link rel="icon" type="image/jpg" href="favicon.ico"/>
+</head>
+
+<!-- todo: Add your path here -->
+<!-- % extends "C:/Users/therrmann/Desktop/Eigene_Datei/Martin/Schule/Master/3._Semester_19.10/Interaktive_Geoemdiengestaltung/Projekt//geomedigeomedi/templates/index.html" %} -->
+{% extends "D:/repo/geomedi/geomedi/templates\index.html" %}
+
+{% load static %}
+{% load leaflet_tags %}
+{% load geojson_tags %}
+{% leaflet_js %}
+{% leaflet_css %}
+
+{% block content %}
+    <div id="sidebar">
+    </div>
+    <script type="text/javascript">
+        function ourfunction(map, options) {
+            //Marker with GeoJson
+            function onEachFeature(feature, layer) {
+                if(feature.geometry.type === 'Point'){
+                    //############ NEW ##############
+                    layer.bindPopup('<img src="../static/map/images/sights/' + feature.properties.picture + '.JPG"/><p>' + '<h4>' + feature.properties.name + '</h4><br/></p><button class="trigger">more...</button>');
+                    $('#map').on('click', '.trigger', function() {
+                        show = true;
+                        openSidebar();
+                    });
+                    layer.on({
+                        click: openSidebar,
+                    });
+                }
+                //OnClick hide Sidebar
+                map.on('click', function () {
+                    sidebar.hide();
+                })
+            }
+
+            //######### NEW ############
+            //SIDEBAR-FUNCTION
+            var show = false;       //boolean wert zum zeigen der sidebar
+            function openSidebar(e){
+                if(show){
+                    sidebar.toggle();
+                    show = false;
+                }
+                if(e.target.feature.geometry.type === 'Point'){
+                    sidebar.setContent('<h3>' + e.target.feature.properties.name + '</h3><br/>' + '<img src="../static/map/images/sights/' + e.target.feature.properties.picture + '.JPG"/><br/><p>' + '<h4>' + e.target.feature.properties.description + '</h4></p>');
+                }
+            }
+            
+            //############# END NEW ############
+
+            var controlLayers = L.control.layers().addTo(map);
+            
+            //Add Marker
+            var ourdata = '{% url "data" %}';
+
+            $.getJSON(ourdata, function (data) {
+                var marker = L.geoJson(data, {onEachFeature: onEachFeature}).addTo(map);
+                controlLayers.addOverlay(marker, 'Marker');
+            })
+
+            //Add Polygon
+            var polydata = '{% url "poly" %}';
+
+            $.getJSON(polydata, function (poly) {
+                var polygone = L.geoJson(poly).addTo(map);
+                controlLayers.addOverlay(polygone, 'Polygone');
+            })
+
+            //Routing
+            //Quelle: http://www.liedman.net/leaflet-routing-machine/tutorials/
+            L.Routing.control({
+                //Startpunkte festlegen
+                waypoints: [
+                    L.latLng(52.514, 13.350),
+                    L.latLng(52.520, 13.409)
+                ],
+                //Lineoptions
+                lineOptions: {
+                    styles: [
+                        {color: 'black', opacity: 0.3, weight: 11},
+                        {color: 'white', opacity: 0.9, weight: 9},
+                        {color: 'red', opacity: 1, weight: 3}
+                    ]
+                },
+                //List collapse
+                collapsible: true,
+                //Geocoder
+                geocoder: true,
+                //show routing in beginning
+                show: false,
+
+            }).addTo(map);
+
+            //Init Sidebar
+            var sidebar = L.control.sidebar('sidebar', {
+                position: 'left',
+                closeButton: 'true'
+            });
+            //Start options: show/hide sidebar
+            setTimeout(function () {
+                sidebar.hide();
+            }, 500);
+
+            //Add content to sidebar
+            //sidebar.setContent('<b>' + test + '</b>');
+            map.addControl(sidebar);
+            //return properties.name;
+        }
+
+        //Sleep Map
+        map3 = L.map('map', {
+            // true by default, false if you want a wild map
+            sleep: true,
+            // time(ms) for the map to fall asleep upon mouseout
+            sleepTime: 750,
+            // time(ms) until map wakes on mouseover
+            wakeTime: 750,
+            // defines whether or not the user is prompted oh how to wake map
+            sleepNote: true,
+            // allows ability to override note styling
+            sleepNoteStyle: {color: 'red'},
+            // should hovering wake the map? (clicking always will)
+            hoverToWake: true,
+            // opacity (between 0 and 1) of inactive map
+            sleepOpacity: .7
+        })
+    </script>
+    {% leaflet_map "map" callback="window.ourfunction" %}
+{% endblock %}

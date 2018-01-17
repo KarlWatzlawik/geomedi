@@ -1,0 +1,49 @@
+<head>
+    <title>Home</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   <!-- WICHTIG FÜR RESPONSIVE SEITEN -->
+
+    <!-- styles -->
+    <link href="../static/map/style/mapstyle.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- todo: Add your path here -->
+<!-- % extends "C:/Users/therrmann/Desktop/Eigene_Datei/Martin/Schule/Master/3._Semester_19.10/Interaktive_Geoemdiengestaltung/Projekt//geomedigeomedi/templates/index.html" %} -->
+{% extends "D:/repo/geomedi/geomedi/templates\index.html" %}
+
+{% block content %}
+
+    <div class="row_home">
+        <div class="caption">
+            <p class="header1">Festival of Lights Berlin 2018</p>
+        </div>
+        <div class="thumbnail_home">
+            <figure>
+                <img class="panorama_home" src="../static/map/images/other/panorama.jpg" alt="Alt">
+                <figcaption class="creativecommons">
+                    <a class="creativecommons" target="_blank"
+                       href="https://www.flickr.com/photos/salomaonunes/4078996386/in/photolist-7drVvU-jdm2Gp-avZfjP-aw3S1H-7drVNJ-zQ1M6i-5uw71j-8RyfP4-8RBofA-dtcG5t-dtcGpD-5wbdoM-aBMMTW-8Hxocu-pQLK8Z-5xZcAq-pNG2Yf-dm6zJ1-dm6zSm-dm6vJz-q6yt4-7a1duk-rfeAG-8y3Q3Q-rfcPk-rfeBG-zntgdj-q6z3r">Photo</a>
+                    <a class="creativecommons" target="_blank" href="https://www.flickr.com/photos/salomaonunes/"> by
+                        Salomao Nunes</a>
+                    <a class="creativecommons" target="_blank"
+                       href="https://creativecommons.org/licenses/by-nc-nd/2.0/"> is licensed under CC
+                        BY-NC-ND 2.0</a>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <div>
+        <p class="text_home"> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+            dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+            clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+    </div>
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://youtube.de/embed/KCEeuxJEk6c"></iframe>
+    </div>
+{% endblock %}
+</body>
