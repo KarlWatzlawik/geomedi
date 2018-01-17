@@ -3,11 +3,14 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   <!-- WICHTIG FÜR RESPONSIVE SEITEN -->
     <link rel="icon" type="image/jpg" href="favicon.ico"/>
+
+    <!-- MAP-STYLE -->
+    <link rel="stylesheet" type="text/css" href="{ ../'map/style/mapstyle.css' %}"/>
 </head>
 
 <!-- todo: Add your path here -->
-<!-- % extends "C:/Users/therrmann/Desktop/Eigene_Datei/Martin/Schule/Master/3._Semester_19.10/Interaktive_Geoemdiengestaltung/Projekt//geomedigeomedi/templates/index.html" %} -->
-{% extends "D:/repo/geomedi/geomedi/templates\index.html" %}
+{% extends "C:/Users/therrmann/Desktop/Eigene_Datei/Martin/Schule/Master/3._Semester_19.10/Interaktive_Geoemdiengestaltung/Projekt/geomedi/geomedi/templates/index.html" %}
+<!--% extends "D:/repo/geomedi/geomedi/templates\index.html" %} -->
 
 {% load static %}
 {% load leaflet_tags %}
@@ -48,7 +51,7 @@
                     show = false;
                 }
                 if(e.target.feature.geometry.type === 'Point'){
-                    sidebar.setContent('<h3>' + e.target.feature.properties.name + '</h3><br/>' + '<img src="../static/map/images/sights/' + e.target.feature.properties.picture + '.JPG"/><br/><p>' + '<h4>' + e.target.feature.properties.description + '</h4></p>');
+                    sidebar.setContent('<h3 class="h3_sidebar">' + e.target.feature.properties.name + '</h3><br/>' + '<img src="../static/map/images/sights/' + e.target.feature.properties.picture + '.JPG"/><br/><p>' + '<p class="p_sidebar">' + e.target.feature.properties.description + '</p></p>');
                 }
             }
             
