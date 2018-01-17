@@ -23,7 +23,6 @@
             //Marker with GeoJson
             function onEachFeature(feature, layer) {
                 if(feature.geometry.type === 'Point'){
-                    //############ NEW ##############
                     layer.bindPopup('<img src="../static/map/images/sights/' + feature.properties.picture + '.JPG"/><p>' + '<h4>' + feature.properties.name + '</h4><br/></p><button class="trigger">more...</button>');
                     $('#map').on('click', '.trigger', function() {
                         show = true;
@@ -39,7 +38,6 @@
                 })
             }
 
-            //######### NEW ############
             //SIDEBAR-FUNCTION
             var show = false;       //boolean wert zum zeigen der sidebar
             function openSidebar(e){
@@ -51,8 +49,6 @@
                     sidebar.setContent('<h3>' + e.target.feature.properties.name + '</h3><br/>' + '<img src="../static/map/images/sights/' + e.target.feature.properties.picture + '.JPG"/><br/><p>' + '<h4>' + e.target.feature.properties.description + '</h4></p>');
                 }
             }
-            
-            //############# END NEW ############
 
             var controlLayers = L.control.layers().addTo(map);
             
@@ -71,15 +67,20 @@
                 var polygone = L.geoJson(poly).addTo(map);
                 controlLayers.addOverlay(polygone, 'Polygone');
             })
-
+            var start = false;
             //Routing
             //Quelle: http://www.liedman.net/leaflet-routing-machine/tutorials/
             L.Routing.control({
-                //Startpunkte festlegen
-                waypoints: [
+                if(start = true){
+                    waypoints: [
                     L.latLng(52.514, 13.350),
                     L.latLng(52.520, 13.409)
-                ],
+                ]
+                },
+                /*waypoints: [
+                    L.latLng(52.514, 13.350),
+                    L.latLng(52.520, 13.409)
+                ],*/
                 //Lineoptions
                 lineOptions: {
                     styles: [
@@ -88,15 +89,15 @@
                         {color: 'red', opacity: 1, weight: 3}
                     ]
                 },
+                routeWhileDragging: true,
+                //Geocoder Nominatim
+                geocoder: L.Control.Geocoder.nominatim(),
                 //List collapse
                 collapsible: true,
-                //Geocoder
-                geocoder: true,
                 //show routing in beginning
                 show: false,
-
             }).addTo(map);
-
+            
             //Init Sidebar
             var sidebar = L.control.sidebar('sidebar', {
                 position: 'left',
