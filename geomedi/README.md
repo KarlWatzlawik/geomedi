@@ -7,30 +7,26 @@ Strg + alt + L
 
 
 To Do's:
-
 Popufenster
-- Wieso wird immer nur ein Popupfenster geöffnet?
 - Popupfenster stylen
 
-
 Refactoring
-- index.html: style herausnehmen
 - map.html: JS herausnehmen
 
 
-Sonstiges
-- Kartennavigation: Adresseingabe ermöglichen
-- Kartennavigation: Defaultwerte auf null setzen
-- info.txt anlegen
-- Peter's Marker einsetzen
+
 
 
 
 Aufgegeben
 - News / Neuigkeiten anlegen
-
+- Peter's Marker einsetzen
 
 DONE
+- index.html: style herausnehmen
+- Kartennavigation: Adresseingabe ermöglichen
+- Kartennavigation: Defaultwerte auf null setzen
+- Wieso wird immer nur ein Popupfenster geöffnet?
 - Favicon anlegen --> Wird nur auf Server angezeigt
 - Responsivität prüfen
 - Vermerke auf leaflet/bootstrap angeben
