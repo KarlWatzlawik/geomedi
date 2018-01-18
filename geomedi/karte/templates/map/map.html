@@ -9,8 +9,9 @@
 </head>
 
 <!-- todo: Add your path here -->
-{% extends "C:/Users/therrmann/Desktop/Eigene_Datei/Martin/Schule/Master/3._Semester_19.10/Interaktive_Geoemdiengestaltung/Projekt/geomedi/geomedi/templates/index.html" %}
-<!--% extends "D:/repo/geomedi/geomedi/templates\index.html" %} -->
+{% extends "/home/urban/geomedi/geomedi/templates/index.html" %}
+<!-- % extends "C:/Users/therrmann/Desktop/Eigene_Datei/Martin/Schule/Master/3._Semester_19.10/Interaktive_Geoemdiengestaltung/Projekt/geomedigeomedi/geomedi/templates/index.html" %} -->
+<!-- % extends "D:/repo/geomedi/geomedi/templates\index.html" %} -->
 
 {% load static %}
 {% load leaflet_tags %}
@@ -26,8 +27,8 @@
             //Marker with GeoJson
             function onEachFeature(feature, layer) {
                 if(feature.geometry.type === 'Point'){
-                    //############ NEW ##############
-                    layer.bindPopup('<img src="../static/map/images/sights/' + feature.properties.picture + '.JPG"/><p>' + '<h4>' + feature.properties.name + '</h4><br/></p><button class="trigger">more...</button>');
+                    layer.bindPopup('<img src="../static/map/images/sights/' + feature.properties.picture + '.jpg"/><p>' + '<h4>' + feature.properties.name + '</h4><br/></p><button class="trigger">more...</button>');
+                    //layer.bindPopup('<img src="http://138.68.95.249:8000/static/map/images/sights/' + feature.properties.picture + '.jpg"/><p>' + '<h4>' + feature.properties.name + '</h4><br/></p><button class="trigger">more...</button>');
                     $('#map').on('click', '.trigger', function() {
                         show = true;
                         openSidebar();
@@ -36,13 +37,15 @@
                         click: openSidebar,
                     });
                 }
+                if(feature.geometry.type === 'MultiPolygon'){
+                    layer.bindPopup(feature.properties.name);
+                }
                 //OnClick hide Sidebar
                 map.on('click', function () {
                     sidebar.hide();
                 })
             }
 
-            //######### NEW ############
             //SIDEBAR-FUNCTION
             var show = false;       //boolean wert zum zeigen der sidebar
             function openSidebar(e){
@@ -51,11 +54,10 @@
                     show = false;
                 }
                 if(e.target.feature.geometry.type === 'Point'){
-                    sidebar.setContent('<h3 class="h3_sidebar">' + e.target.feature.properties.name + '</h3><br/>' + '<img src="../static/map/images/sights/' + e.target.feature.properties.picture + '.JPG"/><br/><p>' + '<p class="p_sidebar">' + e.target.feature.properties.description + '</p></p>');
+                    //sidebar.setContent('<h3>' + e.target.feature.properties.name + '</h3><br/>' + '<img src="http://138.68.95.249:8000/static/map/images/sights/' + e.target.feature.properties.picture + '.jpg/"/><br/><p>' + '<h4>' + e.target.feature.properties.description + '</h4></p>');
+                    sidebar.setContent('<h3>' + e.target.feature.properties.name + '</h3><br/>' + '<img src="../static/map/images/sights/' + e.target.feature.properties.picture + '.jpg"/><br/><p>' + '<h4>' + e.target.feature.properties.description + '</h4></p>');
                 }
             }
-            
-            //############# END NEW ############
 
             var controlLayers = L.control.layers().addTo(map);
             
@@ -71,18 +73,17 @@
             var polydata = '{% url "poly" %}';
 
             $.getJSON(polydata, function (poly) {
-                var polygone = L.geoJson(poly).addTo(map);
+                var polygone = L.geoJson(poly, {onEachFeature: onEachFeature}).addTo(map);
                 controlLayers.addOverlay(polygone, 'Polygone');
             })
-
+            var start = false;
             //Routing
             //Quelle: http://www.liedman.net/leaflet-routing-machine/tutorials/
             L.Routing.control({
-                //Startpunkte festlegen
-                waypoints: [
+                /*waypoints: [
                     L.latLng(52.514, 13.350),
                     L.latLng(52.520, 13.409)
-                ],
+                ],*/
                 //Lineoptions
                 lineOptions: {
                     styles: [
@@ -91,15 +92,17 @@
                         {color: 'red', opacity: 1, weight: 3}
                     ]
                 },
+                routeWhileDragging: true,
+                //Geocoder Nominatim
+                geocoder: L.Control.Geocoder.nominatim(),
                 //List collapse
                 collapsible: true,
-                //Geocoder
-                geocoder: true,
                 //show routing in beginning
                 show: false,
-
+                //Language
+                language: 'de'
             }).addTo(map);
-
+            
             //Init Sidebar
             var sidebar = L.control.sidebar('sidebar', {
                 position: 'left',
