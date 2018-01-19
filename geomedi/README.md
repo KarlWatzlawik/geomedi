@@ -3,6 +3,7 @@
 Bildrechte:
 
 - Dom
+"
 <figcaption class="creativecommons photo_list_text_legal">
                 <a class="creativecommons" target="_blank"
                     href="https://www.flickr.com/photos/hagens_world/15577799122/">
@@ -14,6 +15,7 @@ Bildrechte:
                     href="https://creativecommons.org/licenses/by-nc-nd/2.0/">
                     is licensed under CC BY-NC-ND 2.0</a>
 </figcaption>
+"
 
 ---------------------------------------------------------------------------------------------------------------------------
 
