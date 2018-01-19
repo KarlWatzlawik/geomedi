@@ -9,8 +9,8 @@
 </head>
 
 <!-- todo: Add your path here -->
-{% extends "/home/urban/geomedi/geomedi/templates/index.html" %}
-<!-- % extends "C:/Users/therrmann/Desktop/Eigene_Datei/Martin/Schule/Master/3._Semester_19.10/Interaktive_Geoemdiengestaltung/Projekt/geomedigeomedi/geomedi/templates/index.html" %} -->
+<!--% extends "/home/urban/geomedi/geomedi/templates/index.html" %} -->
+{% extends "C:/Users/therrmann/Desktop/Eigene_Datei/Martin/Schule/Master/3._Semester_19.10/Interaktive_Geoemdiengestaltung/Projekt/geomedi/geomedi/templates/index.html" %}
 <!-- % extends "D:/repo/geomedi/geomedi/templates\index.html" %} -->
 
 {% load static %}
@@ -26,10 +26,10 @@
         function ourfunction(map, options) {
             //Marker with GeoJson
             function onEachFeature(feature, layer) {
-                if(feature.geometry.type === 'Point'){
-                    layer.bindPopup('<img src="../static/map/images/sights/' + feature.properties.picture + '.jpg"/><p>' + '<h4>' + feature.properties.name + '</h4><br/></p><button class="trigger">more...</button>');
+                if (feature.geometry.type === 'Point') {
+                    layer.bindPopup('<h4 class="h4_pin">' + feature.properties.name + '</h4>' + '<img src="../static/map/images/sights/' + feature.properties.picture + '.jpg"/><br/>' + '<br><button class="button_pin trigger">mehr</button>');
                     //layer.bindPopup('<img src="http://138.68.95.249:8000/static/map/images/sights/' + feature.properties.picture + '.jpg"/><p>' + '<h4>' + feature.properties.name + '</h4><br/></p><button class="trigger">more...</button>');
-                    $('#map').on('click', '.trigger', function() {
+                    $('#map').on('click', '.trigger', function () {
                         show = true;
                         openSidebar();
                     });
@@ -37,7 +37,7 @@
                         click: openSidebar,
                     });
                 }
-                if(feature.geometry.type === 'MultiPolygon'){
+                if (feature.geometry.type === 'MultiPolygon') {
                     layer.bindPopup(feature.properties.name);
                 }
                 //OnClick hide Sidebar
@@ -48,19 +48,19 @@
 
             //SIDEBAR-FUNCTION
             var show = false;       //boolean wert zum zeigen der sidebar
-            function openSidebar(e){
-                if(show){
+            function openSidebar(e) {
+                if (show) {
                     sidebar.toggle();
                     show = false;
                 }
-                if(e.target.feature.geometry.type === 'Point'){
+                if (e.target.feature.geometry.type === 'Point') {
                     //sidebar.setContent('<h3>' + e.target.feature.properties.name + '</h3><br/>' + '<img src="http://138.68.95.249:8000/static/map/images/sights/' + e.target.feature.properties.picture + '.jpg/"/><br/><p>' + '<h4>' + e.target.feature.properties.description + '</h4></p>');
-                    sidebar.setContent('<h3>' + e.target.feature.properties.name + '</h3><br/>' + '<img src="../static/map/images/sights/' + e.target.feature.properties.picture + '.jpg"/><br/><p>' + '<h4>' + e.target.feature.properties.description + '</h4></p>');
+                    sidebar.setContent('<h3 class="h3_sidebar">' + e.target.feature.properties.name + '</h3><br/>' + '<img src="../static/map/images/sights/' + e.target.feature.properties.picture + '.jpg"/><br/>' + '<p class="p_sidebar">' + e.target.feature.properties.description + '</p>');
                 }
             }
 
             var controlLayers = L.control.layers().addTo(map);
-            
+
             //Add Marker
             var ourdata = '{% url "data" %}';
 
@@ -77,6 +77,7 @@
                 controlLayers.addOverlay(polygone, 'Polygone');
             })
             var start = false;
+
             //Routing
             //Quelle: http://www.liedman.net/leaflet-routing-machine/tutorials/
             L.Routing.control({
@@ -102,7 +103,7 @@
                 //Language
                 language: 'de'
             }).addTo(map);
-            
+
             //Init Sidebar
             var sidebar = L.control.sidebar('sidebar', {
                 position: 'left',
@@ -117,6 +118,14 @@
             //sidebar.setContent('<b>' + test + '</b>');
             map.addControl(sidebar);
             //return properties.name;
+
+            //New Map Style
+            /*
+            L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            map.attributionControl.setPrefix(''); // Don't show the 'Powered by Leaflet' text. Attribution overload
+            */
         }
 
         //Sleep Map
@@ -136,6 +145,7 @@
             // opacity (between 0 and 1) of inactive map
             sleepOpacity: .7
         })
+
     </script>
     {% leaflet_map "map" callback="window.ourfunction" %}
 {% endblock %}
