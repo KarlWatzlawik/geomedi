@@ -89,31 +89,16 @@ Strg + alt + L
 
 
 To Do's:
-- Pin Fenster Hintergrundfarbe schwarz
-- More-Button stylen
-- PIN-Fensterbreite-Bug (Erstaufruf)
-- Fensterbreite Marker (oben rechts in karte)
-- Close Button ändern
-
-
-
-
 
 - Bildrechteangabe für Sidebar einfügen (s.o.)
-- Bildrechteangabe für Pins bzw. Bild in PIN löschen
+- Bildrechteangabe für Pins
 - Angaben im Impressum
 - Admin-Bereich: Marker anlegen (nur, zu denen Bilder vorhanden) s.o. (--> Blindtext als Beschreibung!!!)
 - Refactoring: map.html: JS herausnehmen
 
-
 - Neue Basemap (How to switch leaflet default tile?)
     http://maps.stamen.com/#terrain/12/37.7706/-122.3782
     https://carto.com/location-data-services/basemaps/
-
-
-    
-
-
 
 
 Aufgegeben
@@ -122,6 +107,11 @@ Aufgegeben
 - Peter's Marker einsetzen
 
 DONE
+- Pin Fenster Hintergrundfarbe schwarz
+- More-Button stylen
+- PIN-Fensterbreite-Bug (Erstaufruf)
+- Fensterbreite Marker (oben rechts in karte)
+- Close Button ändern
 - Sidebarfenster mehr Transparenz
 - Popupfenster stylen
 - index.html: style herausnehmen
