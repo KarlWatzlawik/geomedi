@@ -8,7 +8,7 @@ from . import views     #importiert views aus dem aktuellen verzeichnis (.)
 urlpatterns = [
 	url(r'^$', views.home,name='home'),
     url(r'^admin/', admin.site.urls),
-	url(r'^data/', GeoJSONLayerView.as_view(model=Marker, properties=('name','description','picture')), name='data'), #properties zur Darstellung weiterer Attribute
+	url(r'^data/', GeoJSONLayerView.as_view(model=Marker, properties=('name','description','picture','reference','author')), name='data'), #properties zur Darstellung weiterer Attribute
 	url(r'^poly/', GeoJSONLayerView.as_view(model=Polygon, properties=('name','description')), name='poly'), #properties zur Darstellung weiterer Attribute
 	#url(r'^data/', GeoJSONLayerView.as_view(model=Marker), name='data'),
 	#url(r'^data.geojson/', GeoJSONLayerView.as_view(model=Marker), name='data'),

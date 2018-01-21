@@ -8,7 +8,8 @@ class Marker(models.Model):
     geom = models.PointField(srid=4326, blank=True)
     objects = models.GeoManager()
     description = models.TextField(default='')
-    author = models.TextField(default='')
+    reference = models.TextField(default='')
+    author = models.CharField(max_length=50)
 
     def __unicode__(self):
         return self.name

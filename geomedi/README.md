@@ -11,6 +11,7 @@ Bildrechte:
                 <a class="creativecommons" target="_blank"
                     href="https://www.flickr.com/photos/hagens_world/">
                     by  Hagens_world</a>
+                    <br/>
                 <a class="creativecommons" target="_blank"
                     href="https://creativecommons.org/licenses/by-nc-nd/2.0/">
                     is licensed under CC BY-NC-ND 2.0</a>
@@ -27,6 +28,7 @@ Bildrechte:
                 <a class="creativecommons" target="_blank"
                     href="https://www.flickr.com/photos/hagens_world/">
                     by  Hagens_world</a>
+                    <br/>
                 <a class="creativecommons" target="_blank"
                     href="https://creativecommons.org/licenses/by-nc-nd/2.0/">
                     is licensed under CC BY-NC-ND 2.0</a>
@@ -42,6 +44,7 @@ Bildrechte:
                 <a class="creativecommons" target="_blank"
                     href="https://www.flickr.com/photos/hagens_world/">
                     by  Hagens_world</a>
+                    <br/>
                 <a class="creativecommons" target="_blank"
                     href="https://creativecommons.org/licenses/by-nc-nd/2.0/">
                     is licensed under CC BY-NC-ND 2.0</a>
@@ -57,6 +60,7 @@ Bildrechte:
                 <a class="creativecommons" target="_blank"
                     href="https://www.flickr.com/photos/hagens_world/">
                     by  Hagens_world</a>
+                    <br/>
                 <a class="creativecommons" target="_blank"
                     href="https://creativecommons.org/licenses/by-nc-nd/2.0/">
                     is licensed under CC BY-NC-ND 2.0</a>
@@ -73,6 +77,7 @@ Bildrechte:
                 <a class="creativecommons" target="_blank"
                     href="https://www.flickr.com/photos/hagens_world/">
                     by  Hagens_world</a>
+                    <br/>
                 <a class="creativecommons" target="_blank"
                     href="https://creativecommons.org/licenses/by-nc-nd/2.0/">
                     is licensed under CC BY-NC-ND 2.0</a>

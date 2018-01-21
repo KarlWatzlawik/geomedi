@@ -28,7 +28,7 @@
             function onEachFeature(feature, layer) {
                 //Popup-Inhalte für Point-Marker
                 if (feature.geometry.type === 'Point') {
-                    layer.bindPopup('<h4 class="h4_pin">' + feature.properties.name + '</h4>' + '<img src="../static/map/images/sights/' + feature.properties.picture + '.jpg"/><br/>' + '<br><button class="button_pin trigger">mehr</button>');
+                    layer.bindPopup('<h4 class="h4_pin">' + feature.properties.name + '</h4>' + '<img src="../static/map/images/sights/' + feature.properties.picture + '.jpg"/><br/>' + feature.properties.reference + '<br><button class="button_pin trigger">mehr</button>');
                     //Bei klick auf Botten wird die Sidebar geöffnet
                     $('#map').on('click', '.trigger', function () {
                         show = true;
@@ -56,7 +56,7 @@
                     show = false;
                 }
                 if (e.target.feature.geometry.type === 'Point') {
-                    sidebar.setContent('<h3 class="h3_sidebar">' + e.target.feature.properties.name + '</h3><br/>' + '<img src="../static/map/images/sights/' + e.target.feature.properties.picture + '.jpg"/><br/>' + '<p class="p_sidebar">' + e.target.feature.properties.description + '</p>');     //Sidebar-Inhalte
+                    sidebar.setContent('<h3 class="h3_sidebar">' + e.target.feature.properties.name + '</h3><br/>' + '<img src="../static/map/images/sights/' + e.target.feature.properties.picture + '.jpg"/><br/>' + e.target.feature.properties.reference + '<br/><p class="p_sidebar">' + e.target.feature.properties.description + '</p>');     //Sidebar-Inhalte
                 }
             }
 
